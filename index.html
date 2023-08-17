@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot JS</title>
+    <link rel="stylesheet" href="reset.css">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, rgba(0, 1, 36, 1) 0%, rgba(175, 0, 255, 1) 30%, rgba(0, 232, 255, 1) 70%, rgba(0, 1, 36, 1) 100%);
+        }
+
+        img {
+            max-width: 10rem;
+        }
+
+        .intro {
+            display: grid;
+            justify-content: center;
+        }
+
+        .intro__play,
+        .game-settings__btn,
+        .game__bet-btn {
+            margin-top: 20px;
+            background-color: rgb(255, 255, 255);
+            color: blueviolet;
+            font-size: 40px;
+            border: none;
+        }
+
+        .game__bet-btn:disabled {
+            opacity: 0.4;
+        }
+
+
+        .game-settings {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 300ms 500ms;
+        }
+
+        .game {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%) scale(0);
+            transition: transform 500ms 300ms;
+        }
+
+        .show-settings .game-settings {
+            transform: translate(-50%, -50%);
+        }
+
+        .show-settings .intro,
+        .show-game .intro {
+            transform: translateX(-100%);
+            transition: transform 500ms;
+        }
+
+        .show-game .game {
+            transform: translate(-50%);
+        }
+
+        .show-game .game-settings {
+            transition-delay: 0ms;
+        }
+
+       
+
+        .game__row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .game {
+            text-align: center;
+
+
+        }
+
+        .game__fruits {
+            display: grid;
+            justify-items: center;
+            justify-content: center;
+            align-content: center;
+        }
+
+
+        .game__title {
+            font-size: 50px;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .game__column {
+            height: 4rem;
+            overflow: hidden;
+        }
+
+        .game__column img {
+            max-width: 4rem;
+        }
+
+        .bet-animation .game__column-container {
+            transform: translateY(calc(-100% + 4.15rem));
+            transition: transform 1s;
+        }
+
+        .game-settings__row-count,
+        .game-settings__deposit-amount,
+        .game__bet-amount {
+            background-color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 20px;
+            color: blueviolet;
+        }
+
+
+        .game-settings__row-count {
+            margin-bottom: 10px;
+        }
+
+        .game-settings__form {
+            display: grid;
+        }
+
+        .game__balance {
+            color: aqua;
+        }
+
+        .invalid {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="intro">
+        <ul class="intro__fruits-coefficents"></ul>
+
+        <button type="button" class="intro__play">Play</button>
+    </section>
+
+    <section class="game-settings">
+        <form novalidate class="game-settings__form">
+            <input data-whole-number="true" min="1" max="4" placeholder="Row count" class="game-settings__row-count"
+                type="number" name="row-count">
+            <input min="0.01" placeholder="Deposit amount" type="number" class="game-settings__deposit-amount"
+                name="deposit-amount">
+
+            <button class="game-settings__btn" type="submit">Start</button>
+        </form>
+    </section>
+
+    <section class="game">
+        <div class="game__balance"></div>
+
+        <h1 class="game__title">Welcome to our awesome game!</h1>
+
+        <div class="game__fruits"></div>
+
+        <form novalidate class="game__bet">
+            <input min="0.01" class="game__bet-amount" name="bet-amount" type="number">
+
+            <button class="game__bet-btn" type="submit">Bet</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
