@@ -22,9 +22,15 @@
         }
 
         .intro__play,
-        .game-settings__btn,
-        .game__bet-btn {
+        .game-settings__btn {
             margin-top: 20px;
+            background-color: rgb(255, 255, 255);
+            color: blueviolet;
+            font-size: 40px;
+            border: none;
+        }
+
+        .game__bet-btn {
             background-color: rgb(255, 255, 255);
             color: blueviolet;
             font-size: 40px;
@@ -33,6 +39,12 @@
 
         .game__bet-btn:disabled {
             opacity: 0.4;
+        }
+
+        .game__bet {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
         }
 
 
@@ -50,6 +62,14 @@
             left: 50%;
             transform: translate(-50%) scale(0);
             transition: transform 500ms 300ms;
+        }
+
+        .game__balance {
+            font-size: 40px;
+            right: -100px;
+            top: 40px;
+            position: absolute;
+            color: white;
         }
 
         .show-settings .game-settings {
@@ -70,7 +90,7 @@
             transition-delay: 0ms;
         }
 
-       
+
 
         .game__row {
             display: flex;
@@ -128,10 +148,6 @@
 
         .game-settings__form {
             display: grid;
-        }
-
-        .game__balance {
-            color: aqua;
         }
 
         .invalid {
